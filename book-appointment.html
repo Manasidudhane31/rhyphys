@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RhyPhys — Rhythmic Physiotherapy</title>
+<title>Book Appointment — RhyPhys</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
+
   :root {
     --rose: #E8567A;
     --rose-light: #F4A0B5;
@@ -658,470 +659,58 @@
     .blog-grid, .mini-pages-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
+
+
+  .page-hero { min-height: 60vh; padding: 150px 6rem 5rem; background: var(--sand); display:grid; grid-template-columns: 1.1fr 0.9fr; gap:4rem; align-items:center; }
+  .page-hero img { width:100%; height:420px; object-fit:cover; border-radius:4px; box-shadow:0 30px 70px rgba(0,0,0,0.12); }
+  .form-section { padding: 7rem 6rem; background: var(--warm-white); display:grid; grid-template-columns: 0.9fr 1.1fr; gap:4rem; }
+  .info-card { background: var(--sand); padding:2.5rem; border-radius:4px; }
+  form { background: var(--sand); padding:2.5rem; border-radius:4px; }
+  label { display:block; font-size:0.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); margin-bottom:.5rem; }
+  input, select, textarea { width:100%; padding:1rem; border:1px solid rgba(0,0,0,.08); background:var(--warm-white); margin-bottom:1.2rem; font-family:'Jost',sans-serif; color:var(--charcoal); }
+  textarea { min-height:140px; resize:vertical; }
+  @media(max-width:1024px){ .page-hero,.form-section{grid-template-columns:1fr;padding:130px 2.5rem 4rem;} .page-hero img{height:300px;} }
+
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <a href="#" class="logo">Rhy<span>Phys</span><sub>Rhythmic Physiotherapy</sub></a>
+  <a href="index_updated.html" class="logo">Rhy<span>Phys</span><sub>Rhythmic Physiotherapy</sub></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#pillars">Method</a></li>
-    <li><a href="#programs">Programs</a></li>
-    <li><a href="#for">Who It's For</a></li>
-    <li><a href="#blog">Insights</a></li>
+    <li><a href="index_updated.html#about">About</a></li>
+    <li><a href="index_updated.html#pillars">Method</a></li>
+    <li><a href="index_updated.html#programs">Programs</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="book-appointment.html">Book</a></li>
   </ul>
   <a class="nav-cta" href="book-appointment.html">Book a Session</a>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">Kathak Fitness · Physiotherapy · Movement Science</p>
-    <h1>We use dance<br>to <em>rebuild</em><br>you.</h1>
-    <p class="hero-tagline">Ancient Kathak decoded through modern movement science. A complete system for healing, fitness, and transformation — for everyone.</p>
-    <div class="hero-buttons">
-      <a href="#programs" class="btn-primary">Explore Programs</a>
-      <a href="#pillars" class="btn-outline">The Method</a>
-    </div>
+<section class="page-hero">
+  <div>
+    <p class="section-eyebrow">Book Appointment</p>
+    <h1>Start with a <em>consultation</em>.</h1>
+    <p class="hero-tagline">Book a free consultation or request an assessment so RhyPhys can recommend the right program for your body, goals, and recovery needs.</p>
+    <div class="hero-buttons"><a href="#booking-form" class="btn-primary">Start Booking</a><a href="contact.html" class="btn-outline">Ask a Question</a></div>
   </div>
-  <div class="hero-right">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="hero-art">
-      <svg class="dancer-svg" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" fill="none">
-        <!-- Abstract dancer silhouette -->
-        <circle cx="100" cy="50" r="28" fill="#E8567A"/>
-        <!-- Body -->
-        <path d="M100 78 Q85 120 80 160 Q75 190 70 220" stroke="#E8567A" stroke-width="3" fill="none"/>
-        <path d="M100 78 Q115 120 120 160 Q125 190 130 220" stroke="#E8567A" stroke-width="2" fill="none"/>
-        <!-- Arms raised in Kathak posture -->
-        <path d="M85 110 Q60 90 40 70 Q30 60 20 55" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M115 110 Q145 85 168 65 Q178 56 185 48" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Hands with mudra suggestion -->
-        <circle cx="18" cy="54" r="5" fill="#E8567A" opacity="0.6"/>
-        <circle cx="187" cy="46" r="5" fill="#E8567A" opacity="0.6"/>
-        <!-- Legs in tatkar stance -->
-        <path d="M80 220 Q65 270 55 320 Q50 350 48 380" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M120 220 Q135 265 145 310 Q150 340 152 375" stroke="#E8567A" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <!-- Ghungroo suggestion -->
-        <circle cx="48" cy="382" r="6" fill="#C9A96E" opacity="0.7"/>
-        <circle cx="152" cy="377" r="6" fill="#C9A96E" opacity="0.7"/>
-        <!-- Flow lines -->
-        <path d="M30 120 Q50 140 40 170 Q35 185 45 200" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.4"/>
-        <path d="M170 110 Q155 130 160 165" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.4"/>
-      </svg>
-    </div>
-    <div class="hero-badge">
-      <svg viewBox="0 0 100 100" width="100" height="100">
-        <path id="circlePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"/>
-        <text font-size="9.5" fill="rgba(232,86,122,0.7)" font-family="Jost" letter-spacing="2" text-transform="uppercase">
-          <textPath href="#circlePath">DANCE · HEAL · GROW · REPEAT ·&nbsp;</textPath>
-        </text>
-      </svg>
-      <span class="hero-badge-center">✦</span>
-    </div>
-    <blockquote class="hero-quote">
-      "We don't just teach you to dance.<br>We use dance to rebuild you."
-    </blockquote>
-  </div>
+  <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=1200&q=80" alt="Book a movement consultation">
 </section>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat">
-    <span class="stat-number">2000<span style="font-size:1.5rem">+</span></span>
-    <span class="stat-label">Years of Kathak Wisdom</span>
+<section class="form-section" id="booking-form">
+  <div class="info-card">
+    <p class="section-eyebrow">Session Options</p>
+    <h2>Choose what fits you best</h2>
+    <p class="body-text">Free consultation · clinical assessment · private rehab session · beginner Kathak Fitness · kids program · corporate wellness enquiry.</p>
+    <p class="body-text">After submission, the team can confirm availability, location, and the best next step.</p>
   </div>
-  <div class="stat">
-    <span class="stat-number">5</span>
-    <span class="stat-label">Movement Pillars</span>
-  </div>
-  <div class="stat">
-    <span class="stat-number">2</span>
-    <span class="stat-label">Qualifications: Art + Science</span>
-  </div>
-  <div class="stat">
-    <span class="stat-number">1</span>
-    <span class="stat-label">Of Its Kind In India</span>
-  </div>
-</div>
-
-<!-- ABOUT / FOUNDER -->
-<section id="about">
-  <div class="founder-visual">
-    <div class="founder-card">
-      <p class="founder-quote">"I spent years training my body through Kathak and healing bodies through physiotherapy — until I realised they were always saying the same thing. That's why I built RhyPhys."</p>
-      <p class="founder-name">Founder, RhyPhys</p>
-      <div class="creds">
-        <span class="cred-tag">Kathak Visharad</span>
-        <span class="cred-tag">BPT — D.Y. Patil</span>
-        <span class="cred-tag">MSc — Manchester Metropolitan</span>
-        <span class="cred-tag">Mumbai · Thane</span>
-        <span class="cred-tag">Movement Science</span>
-      </div>
-    </div>
-  </div>
-  <div class="about-text">
-    <p class="section-eyebrow">The Founder</p>
-    <h2>The <em>only</em> person who could build this brand</h2>
-    <p class="body-text">With a Kathak Visharad and a Masters in Physiotherapy from Manchester Metropolitan University, the founder of RhyPhys holds a uniquely rare dual authority — both the art and the anatomy, both the soul and the science.</p>
-    <p class="body-text">RhyPhys is not a pivot. It is the inevitable meeting of two lifelong practices — where classical dance becomes clinical medicine, and healing becomes joyful.</p>
-    <a href="#pillars" class="btn-primary" style="margin-top:1rem">Discover the Method</a>
-  </div>
+  <form action="mailto:hello@rhyphys.com" method="post" enctype="text/plain">
+    <label>Name</label><input type="text" name="name" required>
+    <label>Email</label><input type="email" name="email" required>
+    <label>Phone</label><input type="tel" name="phone" placeholder="Optional">
+    <label>Appointment Type</label><select name="appointment_type"><option>Free consultation</option><option>Clinical assessment</option><option>Private rehab session</option><option>Kathak Fitness: Beginners</option><option>Little Movers / Kids</option><option>Corporate wellness</option></select>
+    <label>Preferred Location</label><select name="location"><option>Thane</option><option>Mumbai</option><option>Online when available</option><option>Not sure yet</option></select>
+    <label>Preferred Date / Time</label><input type="text" name="preferred_time" placeholder="Example: Saturday morning">
+    <label>Goals / Notes</label><textarea name="notes" placeholder="Tell us your goal, pain/recovery concern, or program interest..."></textarea>
+    <button class="btn-primary" type="submit">Request Appointment</button>
+  </form>
 </section>
-
-<!-- PILLARS -->
-<section id="pillars">
-  <div class="pillars-header">
-    <p class="section-eyebrow">The Movement System</p>
-    <h2>What is <em>Kathak Fitness?</em></h2>
-    <p>Ancient Indian classical dance, decoded through modern movement science.<br>Five pillars. One complete system.</p>
-  </div>
-  <div class="pillars-grid">
-    <div class="pillar">
-      <span class="pillar-num">01</span>
-      <img class="icon-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=160&q=80" alt="Neurological training">
-      <h3>Neurological Training</h3>
-      <p>Spins (chakkars) recalibrate the vestibular system. Rhythm work sharpens neural timing. Sequences build working memory and motor planning — every session is a brain workout.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">02</span>
-      <img class="icon-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=160&q=80" alt="Posture and rehab">
-      <h3>Joint & Postural Rehab</h3>
-      <p>Tatkar strengthens ankles and absorbs shock. Constant spinal alignment involuntarily activates core and postural muscles — without a single crunch or plank.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">03</span>
-      <img class="icon-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=160&q=80" alt="Low impact cardio">
-      <h3>Low-Impact Cardio</h3>
-      <p>Continuous footwork is a scientifically proven low-impact cardiovascular workout — perfect for joint conditions, post-injury recovery, or anyone who needs to move without pain.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">04</span>
-      <img class="icon-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=160&q=80" alt="Nervous system regulation">
-      <h3>Nervous System Regulation</h3>
-      <p>Foot-to-ground contact combined with rhythmic pattern activates the parasympathetic nervous system — reducing cortisol, calming anxiety, and bringing you back to the present moment.</p>
-    </div>
-    <div class="pillar">
-      <span class="pillar-num">05</span>
-      <img class="icon-img" src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?auto=format&fit=crop&w=160&q=80" alt="Expression and emotional intelligence">
-      <h3>Emotional Intelligence</h3>
-      <p>Abhinaya (expressive gesture) activates mirror neurons, building empathy, emotional regulation and social intelligence. You don't just feel better — you connect better.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHO IT'S FOR -->
-<section id="for">
-  <div class="for-header">
-    <p class="section-eyebrow">Kathak Fitness Is For</p>
-    <h2>This is for <em>everyone.</em></h2>
-    <p>No experience needed. No age limit. No barriers.</p>
-  </div>
-  <div class="for-grid">
-    <div class="for-card">
-      <img class="icon-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=180&q=80" alt="Recovery and rehabilitation">
-      <h3>People in Recovery & Rehabilitation</h3>
-      <p>Post-injury, chronic pain, joint issues, or anyone who needs movement that heals — not hurts. Built on physiotherapy principles, this is RhyPhys's core clinical edge.</p>
-    </div>
-    <div class="for-card">
-      <img class="icon-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=180&q=80" alt="Women wellness">
-      <h3>Women 30–60</h3>
-      <p>Low-impact, full-body, deeply fulfilling fitness that respects your body while transforming it. No high-impact jumps. No gym intimidation. Just movement that feels beautiful.</p>
-    </div>
-    <div class="for-card">
-      <img class="icon-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=180&q=80" alt="Fitness enthusiasts">
-      <h3>Fitness Enthusiasts</h3>
-      <p>Ready for something smarter than the gym? Kathak Fitness trains balance, coordination, cardio, core, memory, and emotional resilience — simultaneously.</p>
-    </div>
-    <div class="for-card">
-      <img class="icon-img" src="assets/parents-children-new.png" alt="Smiling child for parents and children program">
-      <h3>Parents & Children</h3>
-      <p>Give your child body intelligence, brain development, emotional regulation, and cultural roots — all at once. A foundation every sport and stage of life benefits from.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROGRAMS -->
-<section id="programs">
-  <div class="programs-header">
-    <p class="section-eyebrow">What We Offer</p>
-    <h2>Programs designed to <em>heal & transform</em></h2>
-  </div>
-  <div class="programs-grid">
-    <div class="program-card">
-      <div class="program-top">
-        <span class="program-badge">I</span>
-        <span class="program-tag">Foundation</span>
-        <h3>Kathak Fitness: Beginners</h3>
-        <p>Your entry into movement medicine. Learn foundational Kathak sequences with physiotherapy principles built into every step.</p>
-      </div>
-      <div class="program-bottom">
-        <div class="program-feature">Zero prior experience needed</div>
-        <div class="program-feature">Joint-safe & low-impact</div>
-        <div class="program-feature">4-week progressive program</div>
-        <div class="program-feature">In-person · Thane & Mumbai</div>
-        <a href="#cta" class="program-cta">Enquire Now</a>
-      </div>
-    </div>
-    <div class="program-card">
-      <div class="program-top">
-        <span class="program-badge">II</span>
-        <span class="program-tag">Clinical</span>
-        <h3>Rehab through Rhythm</h3>
-        <p>Specifically designed for those recovering from injury or managing chronic conditions. Every sequence is physiotherapist-prescribed.</p>
-      </div>
-      <div class="program-bottom">
-        <div class="program-feature">One-on-one assessment</div>
-        <div class="program-feature">Customised movement plan</div>
-        <div class="program-feature">Post-surgical & chronic pain</div>
-        <div class="program-feature">Progressive recovery tracking</div>
-        <a href="#cta" class="program-cta">Book Assessment</a>
-      </div>
-    </div>
-    <div class="program-card">
-      <div class="program-top">
-        <span class="program-badge">III</span>
-        <span class="program-tag">Kids</span>
-        <h3>Little Movers</h3>
-        <p>For children aged 5–14. Build body awareness, brain development, cultural intelligence and joy through Kathak Fitness.</p>
-      </div>
-      <div class="program-bottom">
-        <div class="program-feature">Ages 5–14</div>
-        <div class="program-feature">Brain & coordination training</div>
-        <div class="program-feature">Cultural roots + modern science</div>
-        <div class="program-feature">Group & parent-child batches</div>
-        <a href="#cta" class="program-cta">Register Child</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="process-header">
-    <p class="section-eyebrow">How It Works</p>
-    <h2>Your journey with <em>RhyPhys</em></h2>
-  </div>
-  <div class="process-steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h4>Free Consultation</h4>
-      <p>We begin with a movement assessment to understand your body, health history, and goals.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h4>Custom Program</h4>
-      <p>A personalised Kathak Fitness plan built at the intersection of your goals and your physiology.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h4>Move & Heal</h4>
-      <p>Attend sessions in Thane or Mumbai. Each class builds on the last — body, brain, and soul.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h4>Track & Transform</h4>
-      <p>Regular progress check-ins with your physiotherapist. Watch yourself become stronger, calmer, freer.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="testimonials-header">
-    <p class="section-eyebrow">Voices</p>
-    <h2>What people are <em>feeling</em></h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"I came in with chronic knee pain after years of running. I never expected dance to be what finally healed me. Every session feels like therapy and joy combined."</p>
-      <p class="testimonial-author">Priya M.</p>
-      <p class="testimonial-role">Post-injury Recovery · Thane</p>
-    </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"As a 52-year-old who was terrified of gyms, this was a revelation. My posture has transformed, my anxiety has reduced, and I look forward to every class."</p>
-      <p class="testimonial-author">Sunita R.</p>
-      <p class="testimonial-role">Women's Wellness · Mumbai</p>
-    </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">"My 8-year-old has better focus at school, better posture, and actually asks to go to class. The scientific depth behind what looks like just dance is extraordinary."</p>
-      <p class="testimonial-author">Rahul & Meera K.</p>
-      <p class="testimonial-role">Parents · Little Movers Program</p>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG/INSIGHTS -->
-<section id="blog">
-  <div class="blog-header">
-    <div>
-      <p class="section-eyebrow">Movement Intelligence</p>
-      <h2>Insights from the <em>intersection</em></h2>
-    </div>
-    <a href="#" class="btn-outline" style="font-size:0.7rem; padding:0.7rem 1.5rem">View All Articles</a>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card">
-      <div class="blog-thumb blog-thumb-1">
-        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80" alt="Neuroscience and movement">
-      </div>
-      <div class="blog-body">
-        <span class="blog-cat">Neuroscience</span>
-        <h4>Why Spinning in Kathak is Literally Rewiring Your Brain</h4>
-        <p>The vestibular system, cerebellar plasticity, and why chakkars are the original neural training tool. A deep dive into the science of spin.</p>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb blog-thumb-2">
-        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80" alt="Footwork and rehab">
-      </div>
-      <div class="blog-body">
-        <span class="blog-cat">Physiotherapy</span>
-        <h4>Tatkar: The Ankle Rehabilitation Protocol Hidden in Plain Sight</h4>
-        <p>How 2,000 years of footwork tradition maps to modern sports medicine.</p>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb blog-thumb-3">
-        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=700&q=80" alt="Rhythm and nervous system regulation">
-      </div>
-      <div class="blog-body">
-        <span class="blog-cat">Mental Wellness</span>
-        <h4>Rhythm as Medicine: The Parasympathetic Nervous System and Dance</h4>
-        <p>Why rhythmic movement is one of the most effective evidence-based tools for anxiety regulation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- LINKED PAGES -->
-<section class="mini-pages" id="quick-links">
-  <div class="mini-pages-header">
-    <p class="section-eyebrow">Next Steps</p>
-    <h2>Everything you need to <em>begin</em></h2>
-  </div>
-  <div class="mini-pages-grid">
-    <article class="mini-page-card">
-      <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80" alt="Movement consultation session">
-      <div class="mini-page-body">
-        <h3>Book Appointment</h3>
-        <p>Choose a consultation, assessment, private rehab session, or beginner program enquiry.</p>
-        <a class="mini-page-link" href="book-appointment.html">Book Now →</a>
-      </div>
-    </article>
-    <article class="mini-page-card">
-      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80" alt="Contact and enquiry">
-      <div class="mini-page-body">
-        <h3>Contact RhyPhys</h3>
-        <p>Ask about programs, locations, clinical suitability, collaborations, or online sessions.</p>
-        <a class="mini-page-link" href="contact.html">Contact Us →</a>
-      </div>
-    </article>
-    <article class="mini-page-card">
-      <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?auto=format&fit=crop&w=900&q=80" alt="Programs and movement science">
-      <div class="mini-page-body">
-        <h3>Programs Guide</h3>
-        <p>Review beginner, rehab, kids, corporate wellness, and online movement options.</p>
-        <a class="mini-page-link" href="#programs">View Programs →</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="cta">
-  <h2>Begin your<br><em>movement medicine</em><br>journey</h2>
-  <p>Thane · Mumbai · Coming Soon Online<br>Free consultation — no commitment</p>
-  <div class="cta-buttons">
-    <a href="book-appointment.html" class="btn-primary">Book Free Consultation</a>
-    <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,0.3); color:#fff">Contact Us</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo" style="color:#fff">Rhy<span style="color:var(--rose); font-style:italic">Phys</span></a>
-      <p style="margin-top:0.8rem">Rhythmic Physiotherapy — where ancient Kathak wisdom meets modern movement science. Dance. Heal. Grow. Repeat.</p>
-      <div class="social-links">
-        <a href="#" class="social-link">in</a>
-        <a href="#" class="social-link">ig</a>
-        <a href="#" class="social-link">yt</a>
-        <a href="#" class="social-link">fb</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h5>Programs</h5>
-      <ul>
-        <li><a href="#programs" style="color:inherit;text-decoration:none">Kathak Fitness: Beginners</a></li>
-        <li>Rehab through Rhythm</li>
-        <li>Little Movers (Kids)</li>
-        <li>Corporate Wellness</li>
-        <li>Online Sessions</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>About</h5>
-      <ul>
-        <li><a href="#about" style="color:inherit;text-decoration:none">The Founder</a></li>
-        <li><a href="#pillars" style="color:inherit;text-decoration:none">The Method</a></li>
-        <li>Philosophy</li>
-        <li>Research & Science</li>
-        <li>Press</li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Find Us</h5>
-      <ul>
-        <li>Thane, Maharashtra</li>
-        <li>Mumbai, Maharashtra</li>
-        <li><a href="mailto:hello@rhyphys.com" style="color:inherit;text-decoration:none">hello@rhyphys.com</a></li>
-        <li><a href="contact.html" style="color:inherit;text-decoration:none">Contact form</a></li>
-        <li>#RhyPhys · #KathaKFitness</li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 RhyPhys — Rhythmic Physiotherapy · Thane · Mumbai · India</p>
-    <p><span>Dance. Heal. Grow. Repeat.</span></p>
-  </div>
-</footer>
-
-<script>
-  // Smooth scroll for nav
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
-
-  // Intersection observer for subtle reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.pillar, .for-card, .program-card, .step, .testimonial, .blog-card, .mini-page-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
+<footer><div class="footer-bottom"><p>© 2026 RhyPhys — Rhythmic Physiotherapy · Thane · Mumbai · India</p><p><a href="index_updated.html" style="color:var(--rose);text-decoration:none">Back to Home</a></p></div></footer></body></html>
