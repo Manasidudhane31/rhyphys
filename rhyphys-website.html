@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RhyPhys — Rhythmic Physiotherapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #E8567A;
+    --rose-light: #F4A0B5;
+    --blush: #FFF0F4;
+    --sand: #F7F3EF;
+    --warm-white: #FDFAF8;
+    --charcoal: #2C2420;
+    --muted: #9A8E8A;
+    --gold: #C9A96E;
+    --dark-bg: #1A1210;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(253,250,248,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(232,86,122,0.1);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .logo span { color: var(--rose); font-style: italic; }
+  .logo sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.45rem; font-weight: 300; letter-spacing: 0.2em;
+    display: block; text-transform: uppercase; color: var(--muted);
+    margin-top: -4px;
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--charcoal);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--rose); color: #fff;
+    border: none; padding: 0.65rem 1.5rem;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.3s;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--charcoal); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    padding: 140px 4rem 6rem 6rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--rose);
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 32px; height: 1px; background: var(--rose);
+    vertical-align: middle; margin-right: 12px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--charcoal); margin-bottom: 1.5rem;
+  }
+  h1 em { color: var(--rose); font-style: italic; }
+  .hero-tagline {
+    font-size: 1rem; font-weight: 200; line-height: 1.8;
+    color: var(--muted); max-width: 420px; margin-bottom: 3rem;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--rose); color: #fff;
+    padding: 1rem 2.2rem; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    transition: all 0.3s; border-radius: 2px;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--charcoal); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--charcoal);
+    padding: 1rem 2.2rem; border: 1px solid var(--charcoal);
+    cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    transition: all 0.3s; border-radius: 2px;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--rose); color: var(--rose); }
+
+  .hero-right {
+    background: var(--dark-bg);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-art {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Abstract dancer silhouette via SVG */
+  .dancer-svg { width: 55%; opacity: 0.18; }
+  .hero-quote {
+    position: absolute; bottom: 3rem; left: 3rem; right: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-style: italic; font-weight: 300;
+    color: rgba(255,255,255,0.7); line-height: 1.6;
+    border-left: 2px solid var(--rose); padding-left: 1.5rem;
+  }
+  .hero-badge {
+    position: absolute; top: 3rem; right: 3rem;
+    width: 100px; height: 100px;
+    border: 1px solid rgba(232,86,122,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    animation: spin 18s linear infinite;
+  }
+  .hero-badge svg { position: absolute; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-badge-center {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--rose); font-style: italic;
+  }
+
+  /* Floating orbs */
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.15; pointer-events: none;
+  }
+  .orb-1 { width: 400px; height: 400px; background: var(--rose); top: -100px; right: -100px; }
+  .orb-2 { width: 300px; height: 300px; background: var(--gold); bottom: 50px; left: 50px; }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 2.5rem 6rem;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .stat { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+  .stat:last-child { border-right: none; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300;
+    color: var(--rose); display: block;
+  }
+  .stat-label {
+    font-size: 0.68rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-top: 0.3rem;
+  }
+
+  /* ── ABOUT / FOUNDER ── */
+  #about {
+    padding: 9rem 6rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    background: var(--sand);
+    position: relative; overflow: hidden;
+  }
+  #about::before {
+    content: 'FOUNDER';
+    position: absolute; right: -2rem; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 10rem; font-family: 'Cormorant Garamond', serif;
+    font-weight: 300; color: rgba(0,0,0,0.04);
+    letter-spacing: 0.2em; pointer-events: none;
+  }
+  .founder-visual {
+    position: relative;
+  }
+  .founder-card {
+    background: var(--warm-white);
+    padding: 3rem;
+    border-radius: 4px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .founder-card::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem; color: var(--rose); opacity: 0.15;
+    position: absolute; top: -1rem; left: 1rem;
+    line-height: 1;
+  }
+  .founder-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-style: italic; font-weight: 400;
+    line-height: 1.7; color: var(--charcoal); margin-bottom: 2rem;
+  }
+  .founder-name {
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rose);
+  }
+  .creds {
+    margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem;
+  }
+  .cred-tag {
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    padding: 0.4rem 1rem; border: 1px solid var(--rose-light);
+    color: var(--muted); border-radius: 50px;
+    text-transform: uppercase;
+  }
+  .about-text { position: relative; z-index: 2; }
+  .section-eyebrow {
+    font-size: 0.68rem; font-weight: 400; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--rose); margin-bottom: 1.2rem;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--charcoal); margin-bottom: 1.5rem;
+  }
+  h2 em { color: var(--rose); font-style: italic; }
+  .body-text {
+    font-size: 0.95rem; font-weight: 300; line-height: 1.9;
+    color: var(--muted); margin-bottom: 1.5rem;
+  }
+
+  /* ── PILLARS ── */
+  #pillars {
+    padding: 9rem 6rem;
+    background: var(--warm-white);
+  }
+  .pillars-header { text-align: center; margin-bottom: 5rem; }
+  .pillars-header p {
+    font-size: 0.95rem; font-weight: 200; color: var(--muted);
+    max-width: 540px; margin: 1rem auto 0; line-height: 1.8;
+  }
+  .pillars-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5px;
+    background: rgba(0,0,0,0.06);
+  }
+  .pillar {
+    background: var(--warm-white);
+    padding: 2.5rem 1.8rem;
+    transition: all 0.4s;
+    cursor: default; position: relative; overflow: hidden;
+  }
+  .pillar::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--rose);
+    transform: scaleX(0); transition: transform 0.4s;
+    transform-origin: left;
+  }
+  .pillar:hover::after { transform: scaleX(1); }
+  .pillar:hover { background: var(--blush); }
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: rgba(0,0,0,0.06); line-height: 1;
+    margin-bottom: 1.5rem; display: block;
+  }
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    color: var(--charcoal); margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .pillar p {
+    font-size: 0.78rem; font-weight: 300; line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* ── WHO IT'S FOR ── */
+  #for {
+    padding: 9rem 6rem;
+    background: var(--dark-bg);
+    position: relative; overflow: hidden;
+  }
+  #for::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(232,86,122,0.08) 0%, transparent 60%);
+  }
+  .for-header { text-align: center; margin-bottom: 5rem; }
+  .for-header h2, .for-header .section-eyebrow { color: #fff; }
+  .for-header h2 em { color: var(--rose); }
+  .for-header p { color: rgba(255,255,255,0.4); font-size: 0.9rem; font-weight: 200; }
+  .for-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; max-width: 900px; margin: 0 auto;
+  }
+  .for-card {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem; border-radius: 4px;
+    transition: all 0.4s; position: relative; overflow: hidden;
+    background: rgba(255,255,255,0.02);
+  }
+  .for-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(232,86,122,0.08) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .for-card:hover::before { opacity: 1; }
+  .for-card:hover { border-color: rgba(232,86,122,0.3); transform: translateY(-4px); }
+  .for-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .for-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: #fff; margin-bottom: 0.8rem;
+  }
+  .for-card p {
+    font-size: 0.82rem; font-weight: 300; line-height: 1.8;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ── PROGRAMS ── */
+  #programs {
+    padding: 9rem 6rem;
+    background: var(--sand);
+  }
+  .programs-header { text-align: center; margin-bottom: 5rem; }
+  .programs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .program-card {
+    background: var(--warm-white);
+    border-radius: 4px; overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    transition: all 0.4s;
+  }
+  .program-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+  .program-top {
+    padding: 2.5rem; position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .program-tag {
+    font-size: 0.62rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--rose);
+    margin-bottom: 0.6rem; display: block;
+  }
+  .program-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; line-height: 1.2;
+    color: var(--charcoal); margin-bottom: 0.6rem;
+  }
+  .program-card p {
+    font-size: 0.8rem; color: var(--muted);
+    font-weight: 300; line-height: 1.7;
+  }
+  .program-badge {
+    position: absolute; top: 2.5rem; right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; color: var(--rose); opacity: 0.12;
+    line-height: 1; font-style: italic;
+  }
+  .program-bottom { padding: 2rem 2.5rem; }
+  .program-feature {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 0.8rem; font-size: 0.78rem;
+    color: var(--muted); font-weight: 300;
+  }
+  .program-feature::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%; background: var(--rose); flex-shrink: 0;
+  }
+  .program-cta {
+    display: block; text-align: center; margin-top: 1.5rem;
+    padding: 0.9rem; border: 1px solid var(--rose);
+    color: var(--rose); font-size: 0.75rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; border-radius: 2px;
+  }
+  .program-cta:hover { background: var(--rose); color: #fff; }
+
+  /* ── PROCESS ── */
+  #process {
+    padding: 9rem 6rem;
+    background: var(--warm-white);
+  }
+  .process-header { text-align: center; margin-bottom: 5rem; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 2.5rem; left: calc(12.5% + 1rem);
+    right: calc(12.5% + 1rem); height: 1px;
+    background: linear-gradient(90deg, var(--rose), var(--rose-light), var(--rose));
+    opacity: 0.3;
+  }
+  .step { text-align: center; padding: 0 1rem; }
+  .step-num {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--warm-white);
+    border: 1.5px solid var(--rose);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--rose);
+  }
+  .step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600;
+    margin-bottom: 0.6rem; color: var(--charcoal);
+  }
+  .step p {
+    font-size: 0.78rem; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    padding: 9rem 6rem;
+    background: var(--blush);
+  }
+  .testimonials-header { text-align: center; margin-bottom: 5rem; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .testimonial {
+    background: var(--warm-white);
+    padding: 2.5rem; border-radius: 4px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: var(--rose); opacity: 0.2;
+    position: absolute; top: 0.5rem; left: 1.5rem;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic; font-weight: 400;
+    line-height: 1.7; color: var(--charcoal);
+    margin-bottom: 1.5rem; padding-top: 1.5rem;
+  }
+  .testimonial-author {
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--rose);
+  }
+  .testimonial-role {
+    font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem;
+  }
+  .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 0.8rem; }
+
+  /* ── BLOG TEASER ── */
+  #blog {
+    padding: 9rem 6rem;
+    background: var(--warm-white);
+  }
+  .blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+  .blog-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .blog-card {
+    border-radius: 4px; overflow: hidden;
+    background: var(--sand);
+    transition: transform 0.4s;
+  }
+  .blog-card:hover { transform: translateY(-4px); }
+  .blog-thumb {
+    height: 200px; background: var(--charcoal);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; color: rgba(255,255,255,0.08);
+    font-style: italic; font-weight: 300;
+    position: relative; overflow: hidden;
+  }
+  .blog-thumb-1 { background: linear-gradient(135deg, #2C2420, #4A3630); }
+  .blog-thumb-2 { background: linear-gradient(135deg, #1A1210, #3A2828); }
+  .blog-thumb-3 { background: linear-gradient(135deg, #2A2030, #3A2040); }
+  .blog-thumb-icon { font-size: 3.5rem; opacity: 0.5; }
+  .blog-body { padding: 1.8rem; }
+  .blog-cat {
+    font-size: 0.62rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--rose);
+    margin-bottom: 0.6rem; display: block;
+  }
+  .blog-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--charcoal); line-height: 1.4; margin-bottom: 0.6rem;
+  }
+  .blog-card p {
+    font-size: 0.78rem; color: var(--muted);
+    line-height: 1.7; font-weight: 300;
+  }
+  .blog-card:first-child .blog-body { padding: 2rem; }
+  .blog-card:first-child h4 { font-size: 1.5rem; }
+
+  /* ── CTA BAND ── */
+  #cta {
+    padding: 8rem 6rem;
+    background: var(--dark-bg);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(232,86,122,0.12) 0%, transparent 65%);
+  }
+  #cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300; color: #fff;
+    line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  #cta h2 em { color: var(--rose); }
+  #cta p {
+    font-size: 0.95rem; color: rgba(255,255,255,0.4);
+    font-weight: 200; margin-bottom: 3rem;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0F0B0A;
+    padding: 5rem 6rem 2.5rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+  }
+  .footer-brand .logo { margin-bottom: 1rem; display: block; }
+  .footer-brand p {
+    font-size: 0.8rem; color: rgba(255,255,255,0.35);
+    line-height: 1.8; font-weight: 300; margin-bottom: 1.5rem;
+  }
+  .social-links { display: flex; gap: 1rem; }
+  .social-link {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); font-size: 0.75rem;
+    text-decoration: none; transition: all 0.3s;
+  }
+  .social-link:hover { border-color: var(--rose); color: var(--rose); }
+  .footer-col h5 {
+    font-size: 0.68rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem; color: rgba(255,255,255,0.3);
+    font-weight: 300; cursor: pointer; transition: color 0.3s;
+  }
+  .footer-col ul li:hover { color: var(--rose); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-size: 0.72rem; color: rgba(255,255,255,0.2);
+  }
+  .footer-bottom span { color: var(--rose); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .hero-left { padding: 140px 2.5rem 4rem; }
+    #about, #pillars, #programs, #process, #blog, #for, #cta, footer { padding: 5rem 2.5rem; }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+    .programs-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 2.5rem; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .stat:last-child, .stat:nth-child(2) { border-bottom: none; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .for-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Rhy<span>Phys</span><sub>Rhythmic Physiotherapy</sub></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#pillars">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#for">Who It's For</a></li>
+    <li><a href="#blog">Insights</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book a Session</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Launching — International Dance Day 2026</p>
+    <h1>We use dance<br>to <em>rebuild</em><br>you.</h1>
+    <p class="hero-tagline">Ancient Kathak decoded through modern movement science. A complete system for healing, fitness, and transformation — for everyone.</p>
+    <div class="hero-buttons">
+      <a href="#programs" class="btn-primary">Explore Programs</a>
+      <a href="#pillars" class="btn-outline">The Method</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="hero-art">
+      <svg class="dancer-svg" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- Abstract dancer silhouette -->
+        <circle cx="100" cy="50" r="28" fill="#E8567A"/>
+        <!-- Body -->
+        <path d="M100 78 Q85 120 80 160 Q75 190 70 220" stroke="#E8567A" stroke-width="3" fill="none"/>
+        <path d="M100 78 Q115 120 120 160 Q125 190 130 220" stroke="#E8567A" stroke-width="2" fill="none"/>
+        <!-- Arms raised in Kathak posture -->
+        <path d="M85 110 Q60 90 40 70 Q30 60 20 55" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M115 110 Q145 85 168 65 Q178 56 185 48" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Hands with mudra suggestion -->
+        <circle cx="18" cy="54" r="5" fill="#E8567A" opacity="0.6"/>
+        <circle cx="187" cy="46" r="5" fill="#E8567A" opacity="0.6"/>
+        <!-- Legs in tatkar stance -->
+        <path d="M80 220 Q65 270 55 320 Q50 350 48 380" stroke="#E8567A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M120 220 Q135 265 145 310 Q150 340 152 375" stroke="#E8567A" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Ghungroo suggestion -->
+        <circle cx="48" cy="382" r="6" fill="#C9A96E" opacity="0.7"/>
+        <circle cx="152" cy="377" r="6" fill="#C9A96E" opacity="0.7"/>
+        <!-- Flow lines -->
+        <path d="M30 120 Q50 140 40 170 Q35 185 45 200" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.4"/>
+        <path d="M170 110 Q155 130 160 165" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="hero-badge">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <path id="circlePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"/>
+        <text font-size="9.5" fill="rgba(232,86,122,0.7)" font-family="Jost" letter-spacing="2" text-transform="uppercase">
+          <textPath href="#circlePath">DANCE · HEAL · GROW · REPEAT ·&nbsp;</textPath>
+        </text>
+      </svg>
+      <span class="hero-badge-center">✦</span>
+    </div>
+    <blockquote class="hero-quote">
+      "We don't just teach you to dance.<br>We use dance to rebuild you."
+    </blockquote>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-number">2000<span style="font-size:1.5rem">+</span></span>
+    <span class="stat-label">Years of Kathak Wisdom</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">5</span>
+    <span class="stat-label">Movement Pillars</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">2</span>
+    <span class="stat-label">Qualifications: Art + Science</span>
+  </div>
+  <div class="stat">
+    <span class="stat-number">1</span>
+    <span class="stat-label">Of Its Kind In India</span>
+  </div>
+</div>
+
+<!-- ABOUT / FOUNDER -->
+<section id="about">
+  <div class="founder-visual">
+    <div class="founder-card">
+      <p class="founder-quote">"I spent years training my body through Kathak and healing bodies through physiotherapy — until I realised they were always saying the same thing. That's why I built RhyPhys."</p>
+      <p class="founder-name">Founder, RhyPhys</p>
+      <div class="creds">
+        <span class="cred-tag">Kathak Visharad</span>
+        <span class="cred-tag">BPT — D.Y. Patil</span>
+        <span class="cred-tag">MSc — Manchester Metropolitan</span>
+        <span class="cred-tag">Mumbai · Thane</span>
+        <span class="cred-tag">Movement Science</span>
+      </div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p class="section-eyebrow">The Founder</p>
+    <h2>The <em>only</em> person who could build this brand</h2>
+    <p class="body-text">With a Kathak Visharad and a Masters in Physiotherapy from Manchester Metropolitan University, the founder of RhyPhys holds a uniquely rare dual authority — both the art and the anatomy, both the soul and the science.</p>
+    <p class="body-text">RhyPhys is not a pivot. It is the inevitable meeting of two lifelong practices — where classical dance becomes clinical medicine, and healing becomes joyful.</p>
+    <a href="#pillars" class="btn-primary" style="margin-top:1rem">Discover the Method</a>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="pillars-header">
+    <p class="section-eyebrow">The Movement System</p>
+    <h2>What is <em>Kathak Fitness?</em></h2>
+    <p>Ancient Indian classical dance, decoded through modern movement science.<br>Five pillars. One complete system.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <span class="pillar-num">01</span>
+      <span class="pillar-icon">🧠</span>
+      <h3>Neurological Training</h3>
+      <p>Spins (chakkars) recalibrate the vestibular system. Rhythm work sharpens neural timing. Sequences build working memory and motor planning — every session is a brain workout.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">02</span>
+      <span class="pillar-icon">🦴</span>
+      <h3>Joint & Postural Rehab</h3>
+      <p>Tatkar strengthens ankles and absorbs shock. Constant spinal alignment involuntarily activates core and postural muscles — without a single crunch or plank.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">03</span>
+      <span class="pillar-icon">❤️</span>
+      <h3>Low-Impact Cardio</h3>
+      <p>Continuous footwork is a scientifically proven low-impact cardiovascular workout — perfect for joint conditions, post-injury recovery, or anyone who needs to move without pain.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">04</span>
+      <span class="pillar-icon">🌿</span>
+      <h3>Nervous System Regulation</h3>
+      <p>Foot-to-ground contact combined with rhythmic pattern activates the parasympathetic nervous system — reducing cortisol, calming anxiety, and bringing you back to the present moment.</p>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">05</span>
+      <span class="pillar-icon">🎭</span>
+      <h3>Emotional Intelligence</h3>
+      <p>Abhinaya (expressive gesture) activates mirror neurons, building empathy, emotional regulation and social intelligence. You don't just feel better — you connect better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="for">
+  <div class="for-header">
+    <p class="section-eyebrow">Kathak Fitness Is For</p>
+    <h2>This is for <em>everyone.</em></h2>
+    <p>No experience needed. No age limit. No barriers.</p>
+  </div>
+  <div class="for-grid">
+    <div class="for-card">
+      <span class="for-icon">🏥</span>
+      <h3>People in Recovery & Rehabilitation</h3>
+      <p>Post-injury, chronic pain, joint issues, or anyone who needs movement that heals — not hurts. Built on physiotherapy principles, this is RhyPhys's core clinical edge.</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">🌸</span>
+      <h3>Women 30–60</h3>
+      <p>Low-impact, full-body, deeply fulfilling fitness that respects your body while transforming it. No high-impact jumps. No gym intimidation. Just movement that feels beautiful.</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">💪</span>
+      <h3>Fitness Enthusiasts</h3>
+      <p>Ready for something smarter than the gym? Kathak Fitness trains balance, coordination, cardio, core, memory, and emotional resilience — simultaneously.</p>
+    </div>
+    <div class="for-card">
+      <span class="for-icon">👨‍👩‍👧</span>
+      <h3>Parents & Children</h3>
+      <p>Give your child body intelligence, brain development, emotional regulation, and cultural roots — all at once. A foundation every sport and stage of life benefits from.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="programs-header">
+    <p class="section-eyebrow">What We Offer</p>
+    <h2>Programs designed to <em>heal & transform</em></h2>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="program-top">
+        <span class="program-badge">I</span>
+        <span class="program-tag">Foundation</span>
+        <h3>Kathak Fitness: Beginners</h3>
+        <p>Your entry into movement medicine. Learn foundational Kathak sequences with physiotherapy principles built into every step.</p>
+      </div>
+      <div class="program-bottom">
+        <div class="program-feature">Zero prior experience needed</div>
+        <div class="program-feature">Joint-safe & low-impact</div>
+        <div class="program-feature">4-week progressive program</div>
+        <div class="program-feature">In-person · Thane & Mumbai</div>
+        <a href="#cta" class="program-cta">Enquire Now</a>
+      </div>
+    </div>
+    <div class="program-card">
+      <div class="program-top">
+        <span class="program-badge">II</span>
+        <span class="program-tag">Clinical</span>
+        <h3>Rehab through Rhythm</h3>
+        <p>Specifically designed for those recovering from injury or managing chronic conditions. Every sequence is physiotherapist-prescribed.</p>
+      </div>
+      <div class="program-bottom">
+        <div class="program-feature">One-on-one assessment</div>
+        <div class="program-feature">Customised movement plan</div>
+        <div class="program-feature">Post-surgical & chronic pain</div>
+        <div class="program-feature">Progressive recovery tracking</div>
+        <a href="#cta" class="program-cta">Book Assessment</a>
+      </div>
+    </div>
+    <div class="program-card">
+      <div class="program-top">
+        <span class="program-badge">III</span>
+        <span class="program-tag">Kids</span>
+        <h3>Little Movers</h3>
+        <p>For children aged 5–14. Build body awareness, brain development, cultural intelligence and joy through Kathak Fitness.</p>
+      </div>
+      <div class="program-bottom">
+        <div class="program-feature">Ages 5–14</div>
+        <div class="program-feature">Brain & coordination training</div>
+        <div class="program-feature">Cultural roots + modern science</div>
+        <div class="program-feature">Group & parent-child batches</div>
+        <a href="#cta" class="program-cta">Register Child</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <p class="section-eyebrow">How It Works</p>
+    <h2>Your journey with <em>RhyPhys</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Free Consultation</h4>
+      <p>We begin with a movement assessment to understand your body, health history, and goals.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Custom Program</h4>
+      <p>A personalised Kathak Fitness plan built at the intersection of your goals and your physiology.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Move & Heal</h4>
+      <p>Attend sessions in Thane or Mumbai. Each class builds on the last — body, brain, and soul.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Track & Transform</h4>
+      <p>Regular progress check-ins with your physiotherapist. Watch yourself become stronger, calmer, freer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <p class="section-eyebrow">Voices</p>
+    <h2>What people are <em>feeling</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I came in with chronic knee pain after years of running. I never expected dance to be what finally healed me. Every session feels like therapy and joy combined."</p>
+      <p class="testimonial-author">Priya M.</p>
+      <p class="testimonial-role">Post-injury Recovery · Thane</p>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"As a 52-year-old who was terrified of gyms, this was a revelation. My posture has transformed, my anxiety has reduced, and I look forward to every class."</p>
+      <p class="testimonial-author">Sunita R.</p>
+      <p class="testimonial-role">Women's Wellness · Mumbai</p>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"My 8-year-old has better focus at school, better posture, and actually asks to go to class. The scientific depth behind what looks like just dance is extraordinary."</p>
+      <p class="testimonial-author">Rahul & Meera K.</p>
+      <p class="testimonial-role">Parents · Little Movers Program</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG/INSIGHTS -->
+<section id="blog">
+  <div class="blog-header">
+    <div>
+      <p class="section-eyebrow">Movement Intelligence</p>
+      <h2>Insights from the <em>intersection</em></h2>
+    </div>
+    <a href="#" class="btn-outline" style="font-size:0.7rem; padding:0.7rem 1.5rem">View All Articles</a>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-thumb blog-thumb-1">
+        <span class="blog-thumb-icon">🧠</span>
+      </div>
+      <div class="blog-body">
+        <span class="blog-cat">Neuroscience</span>
+        <h4>Why Spinning in Kathak is Literally Rewiring Your Brain</h4>
+        <p>The vestibular system, cerebellar plasticity, and why chakkars are the original neural training tool. A deep dive into the science of spin.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb blog-thumb-2">
+        <span class="blog-thumb-icon">🦶</span>
+      </div>
+      <div class="blog-body">
+        <span class="blog-cat">Physiotherapy</span>
+        <h4>Tatkar: The Ankle Rehabilitation Protocol Hidden in Plain Sight</h4>
+        <p>How 2,000 years of footwork tradition maps to modern sports medicine.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb blog-thumb-3">
+        <span class="blog-thumb-icon">🌿</span>
+      </div>
+      <div class="blog-body">
+        <span class="blog-cat">Mental Wellness</span>
+        <h4>Rhythm as Medicine: The Parasympathetic Nervous System and Dance</h4>
+        <p>Why rhythmic movement is one of the most effective evidence-based tools for anxiety regulation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2>Begin your<br><em>movement medicine</em><br>journey</h2>
+  <p>Thane · Mumbai · Coming Soon Online<br>Free consultation — no commitment</p>
+  <div class="cta-buttons">
+    <a href="mailto:hello@rhyphys.com" class="btn-primary">Book Free Consultation</a>
+    <a href="#pillars" class="btn-outline" style="border-color:rgba(255,255,255,0.3); color:#fff">Explore the Method</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="color:#fff">Rhy<span style="color:var(--rose); font-style:italic">Phys</span></a>
+      <p style="margin-top:0.8rem">Rhythmic Physiotherapy — where ancient Kathak wisdom meets modern movement science. Dance. Heal. Grow. Repeat.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">yt</a>
+        <a href="#" class="social-link">fb</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li>Kathak Fitness: Beginners</li>
+        <li>Rehab through Rhythm</li>
+        <li>Little Movers (Kids)</li>
+        <li>Corporate Wellness</li>
+        <li>Online Sessions</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li>The Founder</li>
+        <li>The Method</li>
+        <li>Philosophy</li>
+        <li>Research & Science</li>
+        <li>Press</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Find Us</h5>
+      <ul>
+        <li>📍 Thane, Maharashtra</li>
+        <li>📍 Mumbai, Maharashtra</li>
+        <li>📧 hello@rhyphys.com</li>
+        <li>📞 Enquiries via email</li>
+        <li>#RhyPhys · #KathaKFitness</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RhyPhys — Rhythmic Physiotherapy · Thane · Mumbai · India</p>
+    <p>Launched <span>International Dance Day — April 29, 2026</span></p>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Intersection observer for subtle reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pillar, .for-card, .program-card, .step, .testimonial, .blog-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
